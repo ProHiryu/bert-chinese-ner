@@ -4,7 +4,7 @@
 
 代码参考
 
-- [BERT-NER](https://github.com/kyzhouhzau/BERT-NER)，想看英文原版请务必移步
+- **[BERT-NER](https://github.com/kyzhouhzau/BERT-NER)，想看英文原版请务必移步**
 - [BERT-TF](https://github.com/google-research/bert)
 
 ## 使用方法
