@@ -157,7 +157,8 @@ class DataProcessor(object):
                 if contends.startswith("-DOCSTART-"):
                     words.append('')
                     continue
-                if len(contends) == 0 and words[-1] == '。':
+                # if len(contends) == 0 and words[-1] == '。':
+                if len(contends) == 0:
                     l = ' '.join([label for label in labels if len(label) > 0])
                     w = ' '.join([word for word in words if len(word) > 0])
                     lines.append([l, w])
