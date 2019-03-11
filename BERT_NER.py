@@ -208,12 +208,7 @@ def write_tokens(tokens,mode):
                 wf.write(token+'\n')
         wf.close()
 
-def convert_single_example(ex_index, example, label_list, max_seq_length, tokenizer,mode):
-    label_map = {}
-    for (i, label) in enumerate(label_list,1):
-        label_map[label] = i
-    with open('./output/label2id.pkl','wb') as w:
-        pickle.dump(label_map,w)
+def convert_single_example(ex_index, example, label_map, max_seq_length, tokenizer,mode):
     textlist = example.text.split(' ')
     labellist = example.label.split(' ')
     tokens = []
@@ -293,11 +288,17 @@ def convert_single_example(ex_index, example, label_list, max_seq_length, tokeni
 def filed_based_convert_examples_to_features(
         examples, label_list, max_seq_length, tokenizer, output_file,mode=None
 ):
+    label_map = {}
+    for (i, label) in enumerate(label_list,1):
+        label_map[label] = i
+    with open('./output/label2id.pkl','wb') as w:
+        pickle.dump(label_map,w)
+
     writer = tf.python_io.TFRecordWriter(output_file)
     for (ex_index, example) in enumerate(examples):
         if ex_index % 5000 == 0:
             tf.logging.info("Writing example %d of %d" % (ex_index, len(examples)))
-        feature = convert_single_example(ex_index, example, label_list, max_seq_length, tokenizer,mode)
+        feature = convert_single_example(ex_index, example, label_map, max_seq_length, tokenizer,mode)
         
         def create_int_feature(values):
             f = tf.train.Feature(int64_list=tf.train.Int64List(value=list(values)))
