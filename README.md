@@ -2,9 +2,11 @@
 
 使用预训练语言模型BERT做中文NER尝试，fine - tune BERT模型
 
-代码参考
+PS: [最新albert fine-tune ner模型](https://github.com/ProHiryu/albert-chinese-ner)
 
-- **[BERT-NER](https://github.com/kyzhouhzau/BERT-NER)，想看英文原版请务必移步**
+## 代码参考
+
+- **[BERT-NER](https://github.com/kyzhouhzau/BERT-NER)**
 - [BERT-TF](https://github.com/google-research/bert)
 
 ## 使用方法
